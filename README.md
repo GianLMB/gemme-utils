@@ -2,7 +2,7 @@
 
 ## Overview
 
-gemme-utils is a collection of utilities for handling and processing data related to [GEMME](http://www.lcqb.upmc.fr/GEMME) software and its updated version [ESCOTT](http://gitlab.lcqb.upmc.fr/tekpinar/PRESCOTT/). These utilities include scripts for preparing PDB files, running Docker containers, and plotting scores on protein structures using PyMOL.
+gemme-utils is a collection of utilities for handling and processing data related to [GEMME](http://www.lcqb.upmc.fr/GEMME) software and its updated version [ESCOTT](http://gitlab.lcqb.upmc.fr/tekpinar/PRESCOTT/). These utilities include scripts for preparing input FASTA and PDB files, running Docker containers, and plotting scores on protein structures using PyMOL.
 
 
 ## Requirements
