@@ -16,18 +16,39 @@ gemme-utils is a collection of utilities for handling and processing data relate
 
 ## Installation
 
-To install the required Python packages in a dedicated `conda` environment, run the following:
+After cloning the repository, install the required Python packages in a dedicated `conda` environment, running the following:
 
 ```bash
 conda create -n gemme-env python=3.10
 conda install biopython pandas
 ```
 
-To execute the scripts from any directory, clone the repository and add it to `PATH`:
+Alternatively, create a virtual environment:
+```bash
+python -m venv gemme-venv
+source gemme-venv/bin/activate
+pip install biopython pandas
+```
+
+To execute the scripts from any directory, source `gemme-utils.sh` file:
+```bash
+. /path/to/this/directory/gemme-utils.sh
+```
+
+To ensure the script loads every time you open a terminal, add the above line at the end it to the `~/.bashrc` or `~/zshrc` file.
+
+The command defines a new variable `GU_PATH` pointing to this directory, and a function `gemme-utils` for scripts execution. It also enables bash completion to list available scripts. Custom python scripts saved in this directory will be visible and executable as well.
+
+Now you can call the scripts from any location with the following syntax:
 
 ```bash
-export PATH="/path/to/this/directory:$PATH"
+gemme-utils <script.py> <arg1> ...
+
+# Example:
+cd test_data && gemme-utils prepare_alignment.py trxf2.a3m
 ```
+
+Before the execution, ensure that the proper python environment is active.
 
 ### PyMOL
 
