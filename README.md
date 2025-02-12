@@ -35,7 +35,7 @@ To execute the scripts from any directory, source `gemme-utils.sh` file:
 . /path/to/this/directory/gemme-utils.sh
 ```
 
-To ensure the script loads every time you open a terminal, add the above line at the end it to the `~/.bashrc` or `~/zshrc` file.
+To ensure the script loads every time you open a terminal, add the above line at the end it to the `~/.bashrc` or `~/.zshrc` file.
 
 The command defines a new variable `GU_PATH` pointing to this directory, and a function `gemme-utils` for scripts execution. It also enables bash completion to list available scripts. Custom python scripts saved in this directory will be visible and executable as well.
 
@@ -90,7 +90,20 @@ Example: python prepare_alignment.py test_data/trxf2.a3m
 
 ### prepare_pdb.py
 
-Reformat a PDB file such that it can be used as input for ESCOTT, by removing all residues that are not part of the input sequence.
+Reformat PDB file such that it can be used as input for ESCOTT,
+by removing all residues that are not part of the query sequence.  
+Query sequence is extracted from an alignment file in FASTA format.
+The common subsequence between the query and PDB sequence is extracted,
+and the PDB file is trimmed to only include these residues (output
+file is saved with `_processed.pdb` appended).  
+If the query sequence (and thus the alignment) is longer than the PDB
+sequence, the script will produce an additional alignment file
+(with `_trimmed.fasta` appended) with only the common subsequence.  
+If an exact local match between the query and PDB sequence is not found,
+the script will attempt to find the best local alignment between the two
+sequences. If the alignment score is above an acceptance threshold, the
+script will issue a warning and proceed with the best match, otherwise
+it will raise an error.
 
 Requirements: BioPython
 
